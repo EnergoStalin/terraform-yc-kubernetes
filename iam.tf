@@ -3,7 +3,7 @@ locals {
     service_account_name = "k8s-service-account-${random_string.unique_id.result}"
     node_account_name    = "k8s-node-account-${random_string.unique_id.result}"
   }
-  create_sa = var.use_existing_sa && var.master_service_account_id != null && var.node_service_account_id != null ? true : false
+  create_sa = var.use_existing_sa ? true : false
 }
 
 resource "yandex_iam_service_account" "master" {
